@@ -1,0 +1,141 @@
+:root {
+    --blue-1: #3C429E;
+    --blue-2: #4c52AD;
+    --yellow-1: #fac742;
+    --white: #fff;
+    --grey-1: #ededed;
+    --shadow-dark: rgba(0,0,0,0.3);
+    --shadow-light: rgba(255,255,255,0.1);
+ }
+ 
+ *{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+ 
+ .bodyWeather {
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     font-size: 16;
+     width: 100%;
+     height: 100vh;
+     background-color: #3C429E;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ 
+ .container {
+     width: 400px;
+     height: 80vh;
+     background-color: #4c52AD;
+     border-radius: 20px;
+     box-shadow: 10px 10px 10px  rgba(0,0,0,0.3);
+ }
+ 
+ .upper-data {
+     position: relative;
+     overflow: hidden;
+     width: 100%;
+     height: 50%;
+     border-top-left-radius: 20px;
+     border-top-right-radius: 20px;
+     color: white;
+   }
+   
+   .lower-data {
+     position: relative;
+     overflow: hidden;
+     width: 100%;
+     height: 50%;
+     border-bottom-left-radius: 20px;
+     border-bottom-right-radius: 20px;
+     padding: 1em;
+     display: flex;
+     flex-direction: column;
+     color: white;
+   }
+ 
+   .upper-data img {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+   }
+ 
+   .weather-data {
+     position: relative;
+     z-index: 1;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0,0,0,0.3);
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     color: white;
+   }
+   
+   .location {
+     text-align: center;
+     font-size: 1.2em;
+     color: white;
+   }
+   
+   .temperature {
+     font-size: 4em;
+     text-align: center;
+     font-weight: 900;
+     color: white;
+   }
+ 
+   .more-info-label {
+     color: var(--white);
+   }
+   
+   .more-info-container {
+     flex: 1;
+     background-color: rgba(255,255,255,0.1);;
+     border-bottom-left-radius: 20px;
+     border-bottom-right-radius: 20px;
+     margin-top: 1em;
+     color: white;
+   
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+   }
+   
+   .info-block {
+     width: 50%;
+     display: flex;
+     flex-direction: row;
+     color: white;
+   }
+   
+   .info-block-label {
+     width: 50%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+   }
+   
+   .info-block-label img {
+     width: 1.5em;
+   }
+   
+   .info-block-label span {
+     font-size: 0.8em;
+     color: white;
+   }
+ 
+   .info-block-value {
+     width: 50%;
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     color: white;
+   }
+   
