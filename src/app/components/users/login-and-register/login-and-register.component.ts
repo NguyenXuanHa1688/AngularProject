@@ -43,10 +43,8 @@ export class LoginAndRegisterComponent implements OnInit {
       password: this.password
     }
     this.service.login(user).subscribe(res => {
-      this.data = res
       this.router.navigate(['/app'])
-      localStorage.setItem('token', this.data)
-      console.log(this.data)
+      console.log(res.token)
     })
   }
 }
