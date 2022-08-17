@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -21,24 +21,39 @@ export class ApiService {
 
   //INSPECTION API
   getInspectionList():Observable<any[]>{
-    return this.http.get<any>(this.AppAPIUrl +'/inspections')
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.get<any>(this.AppAPIUrl +'/inspections', {headers: httpHeaders})
   }
 
   addInspection(data: any){
-    return this.http.post<any>(this.AppAPIUrl +'/inspections', data)
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.post<any>(this.AppAPIUrl +'/inspections', {headers: httpHeaders}, data)
   }
 
   updateInspection(id: number|string, data: any){
-    return this.http.put<any>(this.AppAPIUrl + `/inspections/${id}`, data)
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.put<any>(this.AppAPIUrl + `/inspections/${id}`, {headers: httpHeaders}, data)
   }
 
   deleteInspection(id: number|string){
-    return this.http.delete<any>(this.AppAPIUrl + `/inspections/${id}`)
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.delete<any>(this.AppAPIUrl + `/inspections/${id}`, {headers: httpHeaders})
   }
 
   //INSPECTION TYPE API
   getInspectionTypeList():Observable<any[]>{
-    return this.http.get<any>(this.AppAPIUrl +'/inspectionTypes')
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.get<any>(this.AppAPIUrl +'/inspectionTypes', {headers: httpHeaders})
   }
 
   addInspectionType(data: any){
@@ -55,7 +70,10 @@ export class ApiService {
 
   //STATUS API
   getStatusList():Observable<any[]>{
-    return this.http.get<any>(this.AppAPIUrl +'/status')
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.get<any>(this.AppAPIUrl +'/status', {headers: httpHeaders})
   }
 
   addStatus(data: any){
