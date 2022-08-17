@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,7 @@ export class NavbarComponent implements OnInit {
 
   @Output() cityname = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     
@@ -19,5 +20,10 @@ export class NavbarComponent implements OnInit {
     this.cityname.emit(value);
     
     console.log(value)
+  }
+
+  public logout = () => {
+    localStorage.removeItem("token");
+    this.router.navigate(['/user'])
   }
 }

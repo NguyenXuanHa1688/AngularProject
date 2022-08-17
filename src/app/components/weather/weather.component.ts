@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherData } from 'src/app/model/weather.model';
-import { WeatherServiceService } from 'src/app/service/weather-service.service';
+import { WeatherServiceService } from 'src/app/services/weather-service.service';
 
 @Component({
   selector: 'app-weather',

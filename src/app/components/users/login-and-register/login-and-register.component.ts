@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login-and-register',
@@ -12,7 +13,8 @@ export class LoginAndRegisterComponent implements OnInit {
 
   constructor(
     private service:ApiService,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService) { }
 
   @Input() user:any;
   id: number = 0;
@@ -33,7 +35,7 @@ export class LoginAndRegisterComponent implements OnInit {
       password: this.password
     }
     this.service.register(user).subscribe(res => {
-      this.router.navigate(['/app'])
+      alert("SUCCESS CREATE ACCOUNT")
     })
   }
 
@@ -43,8 +45,13 @@ export class LoginAndRegisterComponent implements OnInit {
       password: this.password
     }
     this.service.login(user).subscribe(res => {
-      this.router.navigate(['/app'])
-      console.log(res.token)
+      if(res.msg){
+        return alert("WRONG PASSWPRD")
+      } else {
+        this.authService.saveToken(res.token);
+        this.router.navigate(['/app'])
+        console.log(res.token)
+      }
     })
   }
 }
