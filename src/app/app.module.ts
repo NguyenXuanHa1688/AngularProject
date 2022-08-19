@@ -1,4 +1,4 @@
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,6 +21,8 @@ import { WeatherComponent } from './components/weather/weather.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
+import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
+import { HttpErrorsInterceptor } from './interceptors/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,19 @@ import { HomeComponent } from './components/home/home.component';
     MatTabsModule,
     MatIconModule,
   ],
-  providers: [ApiService],
+  providers: [
+    ApiService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpHeadersInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorsInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
