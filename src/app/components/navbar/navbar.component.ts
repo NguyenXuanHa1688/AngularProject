@@ -26,4 +26,8 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("token");
     this.router.navigate(['/'])
   }
+  
+  onSearchInspection(value: string){
+    this.cityname.emit(value);
+  }
 }

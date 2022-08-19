@@ -18,13 +18,12 @@ export class WeatherComponent implements OnInit {
   }
 
   searching(searchcity: string) {
-    // this.weatherService.getWeatherData(searchcity)
-    // .subscribe({
-    //   next: (response) => {
-    //     this.weatherData = response
-    //     console.log(response)
-    //   }
-    // })
+    this.weatherService.getWeatherData(searchcity)
+    .subscribe({
+      next: (response) => {
+        this.weatherData = response
+        console.log(response)
+      }
+    })
   }
-
 }

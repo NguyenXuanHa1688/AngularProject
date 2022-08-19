@@ -3,6 +3,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { GaugeModule } from 'angular-gauge';
+import { MatTabsModule } from '@angular/material/tabs'
+import { MatIconModule } from '@angular/material/icon'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatSelectModule } from '@angular/material/select'
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginAndRegisterComponent } from './components/users/login-and-register/login-and-register.component';
@@ -13,6 +19,8 @@ import { AddEditInspectionComponent } from './inspection/add-edit-inspection/add
 import { InspectionComponent } from './inspection/inspection.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +31,20 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     InspectionComponent,
     WeatherComponent,
     NavbarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    GaugeModule.forRoot(),
+    MatFormFieldModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatIconModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

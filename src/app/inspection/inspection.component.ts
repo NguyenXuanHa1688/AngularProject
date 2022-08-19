@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-inspection',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InspectionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:ApiService) { }
 
   ngOnInit(): void {
   }
 
+  searchInspection(searchcity: string){
+    this.service.searchInspectionById(parseInt(searchcity)).subscribe(res =>{
+      alert(res.comment)
+    })
+  }
 }

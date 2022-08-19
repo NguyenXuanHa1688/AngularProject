@@ -1,8 +1,10 @@
-<app-navbar></app-navbar>
+<app-navbar (cityname)="searchInspection($event)"></app-navbar>
 <h1 class="text-center">INSPECTION APP</h1>
 <br>
 <div class="container">
     <app-show-inspection></app-show-inspection>
+    <router-outlet></router-outlet>
 </div>
+
 
 

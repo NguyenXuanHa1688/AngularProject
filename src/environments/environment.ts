@@ -9,6 +9,7 @@ export const environment = {
   XRapidAPIHostHeaderValue: 'openweather43.p.rapidapi.com',
   XRapidAPIKeyHeaderName: 'X-RapidAPI-Key',
   XRapidAPIKeyHeaderValue: 'e40a1ebcdamshcc7029147e61b40p1c0e56jsn4ca9876a8414',
+  GAME_URL: 'https://rawg-video-games-database.p.rapidapi.com'
 };
 
 /*
