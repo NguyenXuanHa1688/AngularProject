@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container" style="margin-top: 50px;">
-    <select class="form-select" aria-label="Default select example" [(ngModel)]="sort">
+    <select class="form-select" aria-label="Default select example" [(ngModel)]="sort" (change)="gameSearch(sort)">
         <option selected>Sort</option>
-        <option value="name">Name</option>
+        <option value="Name">Name</option>
         <option value="released">Released</option>
         <option value="added">Added</option>
         <option value="created">Created</option>
@@ -13,15 +13,18 @@
 </div>
 
 <div class="games">
-  <div class="game">
+  <ng-container *ngFor="let game of games">
+    <div class="game">
     <div class="game-thumb-container">
-      <img src="../../../assets/suisei.png" alt="thumbnail" class="game-thumbnail"/>
+      <img *ngIf="game.background_image" src="{{game.background_image}}" alt="thumbnail" class="game-thumbnail"/>
+      <p *ngIf="!game.background_image">NO IMAGE AVAILABLE</p>
     </div>
     <div class="game-description">
-      <p class="game-name">Name</p>
+      <p class="game-name">{{game.name}}</p>
       <div class="game-platform">
-        <img class="game-platform" src="../../../assets/docker.png" alt="slug" />
+        <img *ngFor="let gamePlatform of game.parent_platforms" class="game-platform" src="../../../assets/{{gamePlatform.platform.slug}}.png" alt="{{gamePlatform.platform.slug}}"/>
       </div>
     </div>
-  </div>
+    </div>
+  </ng-container>
 </div>
