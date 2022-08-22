@@ -10,7 +10,7 @@ export interface Game {
     genres: Array<Genre>
     parent_platforms: Array<ParentPlatform>
     publishers: Array<Publishers>
-    rating: Array<Rating>
+    ratings: Array<Rating>
     screenshots: Array<Screenshots>
     trailers: Array<Trailer>
 }

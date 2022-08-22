@@ -45,13 +45,20 @@ export class LoginAndRegisterComponent implements OnInit {
       password: this.password
     }
     this.service.login(user).subscribe(res => {
-      if(res.msg){
-        return alert("WRONG PASSWPRD")
-      } else {
+      if(res){
         this.authService.saveToken(res.token);
         this.router.navigate(['/app'])
         console.log(res.token)
+        alert(res.text())
       }
+      error => {
+        //Handle the error here
+        //If not handled, then throw it
+        alert(res.msg)
+        throw error; 
+     }
+
+
     })
   }
 }
