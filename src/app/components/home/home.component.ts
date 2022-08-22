@@ -15,15 +15,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private httpService: HttpService,
-    private routeSub: Subscription,
-    private gameSub: Subscription,
     private acctiveRouter: ActivatedRoute) { }
 
   public sort:string
   public games: Array<Game>
+  private routeSub: Subscription
+  private gameSub: Subscription
 
   ngOnInit(): void {
-    this.acctiveRouter.params.subscribe((params: Params) => {
+    this.routeSub = this.acctiveRouter.params.subscribe((params: Params) => {
       if(params['game-search']){
         this.gameSearch('metacritic', params['game-search'])
       } else {
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   gameSearch(sort: string, search?:string):void{
-    this.httpService
+    this.gameSub = this.httpService
       .getgamelist(sort, search)
       .subscribe((gamelist: APIResponse<Game>) => {
         this.games = gamelist.results
@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   openGameDetail(id: string):void{
     this.router.navigate(['detail', id])
+    console.log('run?')
   }
 
   ngOnDestroy(): void {
