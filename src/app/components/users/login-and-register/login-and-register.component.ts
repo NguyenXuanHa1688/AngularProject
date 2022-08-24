@@ -16,12 +16,16 @@ export class LoginAndRegisterComponent implements OnInit {
     private router: Router,
     private authService: AuthService) { }
 
-  @Input() user:any;
-  id: number = 0;
-  userName: string = '';
-  password: string = '';
+  @Input() user:any
+  id: number = 0
+  userName: string = ''
+  password: string = ''
 
-  data: string;
+  data: string
+
+  email: string = ''
+
+  activeEmailModal:boolean = false
 
   ngOnInit(): void {
     this.id = this.user.id;
@@ -57,8 +61,28 @@ export class LoginAndRegisterComponent implements OnInit {
         alert(res.msg)
         throw error; 
      }
-
-
     })
+  }
+
+  modalClose() {
+    this.activeEmailModal = false
+  }
+
+  modalOpen() {
+    this.activeEmailModal= true
+  }
+
+  sendPassword(){
+    var EmailDetail = {
+      userName : this.userName,
+      email : this.email,
+    }
+    this.service.sendPassword(EmailDetail).subscribe(res => {
+      var closeModalBtn = document.getElementById('add-edit-modal-close')
+      if(closeModalBtn){
+        closeModalBtn.click()
+      }
+      
+    })  
   }
 }

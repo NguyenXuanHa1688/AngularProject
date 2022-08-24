@@ -14,5 +14,4 @@ export class GameTabsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

@@ -16,6 +16,7 @@
 					<input type="password" name="password" placeholder="Password" [(ngModel)]="password" required>
 					<button (click)="register()">Sign up</button>
 				</form>
+				<button  data-bs-toggle="modal" data-bs-target="#emailModal" (click)="modalOpen()">Forgot password?</button>
 			</div>
 
 			<div class="login">
@@ -29,3 +30,53 @@
 	</div>
 </body>
 </html>
+
+  <!-- Add new inspection type modal
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Get passord through email</h5>
+        </div>
+        <div class="modal-body">
+			<form *ngIf="activeEmailModal">
+				<div class="mb-3">
+					<label for="userName" class="form-label">Your username</label>
+					<input type="text" class="form-control" [(ngModel)]="userName" name="username"> 
+					<label for="email" class="form-label">Your email</label>
+					<input type="text" class="form-control" [(ngModel)]="email" name="email"> 
+				</div>
+				<button (click)="sendPassword()" class="btn btn-primary">
+					send
+				</button>
+			</form>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h1 class="modal-title" id="exampleModalLabel">Get password through email</h1>
+		</div>
+		<div class="modal-body">
+			<form *ngIf="activeEmailModal">
+				<div>
+					<span for="userName" class="form-label" style="color: #573b8a; font-size: 30px;">Your username</span>
+					<input type="text" class="form-control" [(ngModel)]="userName" name="username" style="height: 40px; display: flex;"> 
+					<span for="email" class="form-label" style="color: #573b8a; font-size: 30px;">Your email</span>
+					<input type="text" class="form-control" [(ngModel)]="email" name="email"  style="height: 40px; margin-bottom: 50px; display: flex;"> 
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button (click)="sendPassword()" class="btn btn-primary">
+				send
+			</button>
+		</div>
+	  </div>
+	</div>
+  </div>

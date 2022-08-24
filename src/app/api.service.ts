@@ -115,4 +115,9 @@ export class ApiService {
   login(data: any){
     return this.http.post<any>(this.AppAPIUrl +'/Auth/login', data)
   }
+
+  //SEND PASSWORD FOR USER
+  sendPassword(data: any){
+    return this.http.post<any>(this.AppAPIUrl + '/Email',data)
+  }
 }
