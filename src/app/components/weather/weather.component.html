@@ -2,12 +2,12 @@
 <body class="bodyWeather">
 <div class="container" >
     <div class="upper-data">
-        <img src="../../../assets/hot.jpg" alt="img" *ngIf="((weatherData.main.temp - 32)*5)/9 > 15">
-        <img src="../../../assets/cold.jpg" alt="img" *ngIf="((weatherData.main.temp - 32)*5)/9 <= 15">
+        <img src="../../../assets/hot.jpg" alt="img" *ngIf="weatherData.current.temp_c > 20">
+        <img src="../../../assets/cold.jpg" alt="img" *ngIf="weatherData.current.temp_c <= 20">
 
         <div class="weather-data">
-            <div class="location">{{weatherData.name}}</div>
-            <div class="temperature">{{((weatherData.main.temp - 32)*5)/9 | number: '1.0-0'}}°C</div>
+            <div class="location">{{weatherData.location.name}}</div>
+            <div class="temperature">{{weatherData.current.temp_c | number: '1.0-0'}}°C</div>
         </div>
     </div>
     <div class="lower-data">
@@ -17,21 +17,21 @@
         <div class="more-info-container">
             <div class="info-block">
                 <div class="info-block-label">
-                    <img src="../../../assets/minTemp.png" alt="img">
-                    <span>min</span>
+                    <img src="../../../assets/country.png" alt="img">
+                    <span>country</span>
                 </div>
                 <div class="info-block-value">
-                    {{weatherData.main.temp_min}}°C
+                    {{weatherData.location.country}}
                 </div>
             </div>
 
             <div class="info-block">
                 <div class="info-block-label">
                     <img src="../../../assets/maxTemp.png" alt="img">
-                    <span>max</span>
+                    <span>current temp</span>
                 </div>
                 <div class="info-block-value">
-                    {{weatherData.main.temp_min}}°C
+                    {{weatherData.current.temp_c}}°C
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
                     <span>humidity</span>
                 </div>
                 <div class="info-block-value">
-                    {{weatherData.main.humidity}}%
+                    {{weatherData.current.humidity}}%
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
                     <span>wind</span>
                 </div>
                 <div class="info-block-value">
-                    {{weatherData.wind.speed}} km/h
+                    {{weatherData.current.wind_kph}} km/h
                 </div>
             </div>
         </div>

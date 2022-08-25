@@ -1,7 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, map, Observable } from 'rxjs';
-import { environment as env } from 'src/environments/environment';
+import { environment as env} from 'src/environments/environment';
 import { APIResponse, Game } from '../model/game.model';
 
 @Injectable({
@@ -19,17 +19,39 @@ export class HttpService {
       if(searching){
         let params = new HttpParams().set('ordering', ordering).set('Searching', searching)
       }
-      return this.http.get<APIResponse<Game>>(`${env.GAME_URL}/games`,{params: params})
+      return this.http.get<APIResponse<Game>>(`${env.GAME_URL}/games`,{
+        headers: new HttpHeaders()
+        .set(env.XRapidAPIHostHeaderName, env.XRapidAPIHostHeaderValueForGame)
+        .set(env.XRapidAPIKeyHeaderName, env.XRapidAPIKeyHeaderValue),
+        params: params
+        .set('key',env.key)})
   }
 
   getGameDetails(id: string):Observable<Game> {
-    const gameInfoRequest = this.http.get(`${env.GAME_URL}/games/${id}`)
+    const gameInfoRequest = this.http.get(`${env.GAME_URL}/games/${id}`, {        
+      headers: new HttpHeaders()
+      .set(env.XRapidAPIHostHeaderName, env.XRapidAPIHostHeaderValueForGame)
+      .set(env.XRapidAPIKeyHeaderName, env.XRapidAPIKeyHeaderValue),
+      params: new HttpParams()
+      .set('key',env.key)})
     const gameTrailerRequest = this.http.get(
-      `${env.GAME_URL}/games/${id}/movies`
+      `${env.GAME_URL}/games/${id}/movies`, {
+        headers: new HttpHeaders()
+        .set(env.XRapidAPIHostHeaderName, env.XRapidAPIHostHeaderValueForGame)
+        .set(env.XRapidAPIKeyHeaderName, env.XRapidAPIKeyHeaderValue),
+        params: new HttpParams()
+        .set('key',env.key)
+      }
     )
     const gameScreenshotsRequest = this.http.get(
       `${env.GAME_URL}/games/${id}/screenshots`
-    )
+    , {
+      headers: new HttpHeaders()
+      .set(env.XRapidAPIHostHeaderName, env.XRapidAPIHostHeaderValueForGame)
+      .set(env.XRapidAPIKeyHeaderName, env.XRapidAPIKeyHeaderValue),
+      params: new HttpParams()
+      .set('key',env.key)
+    })
 
     return forkJoin({
       gameInfoRequest,

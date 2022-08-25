@@ -4,12 +4,14 @@
 
 export const environment = {
   production: false,
-  weatherApi: 'https://openweather43.p.rapidapi.com/weather',
+  weatherApi: 'https://weatherapi-com.p.rapidapi.com/current.json',
   XRapidAPIHostHeaderName: 'X-RapidAPI-Host',
-  XRapidAPIHostHeaderValue: 'openweather43.p.rapidapi.com',
+  XRapidAPIHostHeaderValue: 'weatherapi-com.p.rapidapi.com',
+  XRapidAPIHostHeaderValueForGame: 'rawg-video-games-database.p.rapidapi.com',
   XRapidAPIKeyHeaderName: 'X-RapidAPI-Key',
-  XRapidAPIKeyHeaderValue: 'e40a1ebcdamshcc7029147e61b40p1c0e56jsn4ca9876a8414',
-  GAME_URL: 'https://rawg-video-games-database.p.rapidapi.com'
+  XRapidAPIKeyHeaderValue: '767b53fb67msh305994dbb7e4bb9p1310e1jsnf85afd8219d0',
+  GAME_URL: 'https://rawg-video-games-database.p.rapidapi.com',
+  key: '508f2f1460854e06a2fc5704ad08d0c1'
 };
 
 /*
