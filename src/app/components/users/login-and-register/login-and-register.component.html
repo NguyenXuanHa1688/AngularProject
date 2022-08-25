@@ -7,53 +7,34 @@
 <body>
 	<div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
-
 			<div class="signup">
-				<form>
-					<label for="chk" aria-hidden="true" >Sign up</label>
-					<!-- <input type="id" name="id" [(ngModel)]="id" hidden disabled> -->
-					<input type="text" name="username" placeholder="User name" required [(ngModel)]="userName">
-					<input type="password" name="password" placeholder="Password" [(ngModel)]="password" required>
-					<button (click)="register()">Sign up</button>
-				</form>
-				<button  data-bs-toggle="modal" data-bs-target="#emailModal" (click)="modalOpen()">Forgot password?</button>
+				<div class="form-group" [class.has-error]="name.invalid && name.touched || valPassword.invalid && valPassword.touched" [class.has-success]="name.touched">
+					<form>
+						<label for="chk" aria-hidden="true" >Sign up</label>
+						<!-- <input type="id" name="id" [(ngModel)]="id" hidden disabled> -->
+						<input class="form-control" type="text" name="username" placeholder="User name" [(ngModel)]="userName" #name="ngModel" required>
+						<div *ngIf="name.invalid && name.touched" class="error-name">Name is required</div>
+						<input class="form-control" type="password" name="password" placeholder="Password" [(ngModel)]="password" #valPassword="ngModel" required>
+						<div *ngIf="valPassword.invalid && valPassword.touched" class="error-password">Password is required</div>
+						<button (click)="register()" [disabled]="name.invalid || valPassword.invalid">Sign up</button>
+					</form>
+					<button  data-bs-toggle="modal" data-bs-target="#emailModal" (click)="modalOpen()">Forgot password?</button>
+				</div>
 			</div>
 
 			<div class="login">
-				<form>
+				<form [class.has-error]="name.invalid && name.touched || valPassword.invalid && valPassword.touched" [class.has-success]="name.touched">
 					<label for="chk" aria-hidden="true">Login</label>
-					<input type="email" name="userName" placeholder="Name" required [(ngModel)]="userName">
-					<input type="password" name="password" placeholder="Password" required [(ngModel)]="password">
-					<button (click)="login()">Login</button>
+					<input class="form-control" type="name" name="userName" placeholder="Name" required [(ngModel)]="userName" #name="ngModel">
+					<div *ngIf="name.invalid && name.touched" class="error-name">Name is required</div>
+					<input class="form-control" type="password" name="password" placeholder="Password" required [(ngModel)]="password" #valPassword="ngModel">
+					<div *ngIf="valPassword.invalid && valPassword.touched" class="error-password">Password is required</div>
+					<button (click)="login()" [disabled]="name.invalid || valPassword.invalid">Login</button>
 				</form>
 			</div>
 	</div>
 </body>
 </html>
-
-  <!-- Add new inspection type modal
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Get passord through email</h5>
-        </div>
-        <div class="modal-body">
-			<form *ngIf="activeEmailModal">
-				<div class="mb-3">
-					<label for="userName" class="form-label">Your username</label>
-					<input type="text" class="form-control" [(ngModel)]="userName" name="username"> 
-					<label for="email" class="form-label">Your email</label>
-					<input type="text" class="form-control" [(ngModel)]="email" name="email"> 
-				</div>
-				<button (click)="sendPassword()" class="btn btn-primary">
-					send
-				</button>
-			</form>
-        </div>
-      </div>
-    </div>
-  </div> -->
 
   <!-- Modal -->
 <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -64,18 +45,20 @@
 		</div>
 		<div class="modal-body">
 			<form *ngIf="activeEmailModal">
-				<div>
+				<div class="form-group" [class.has-error]="name.invalid && name.touched || valEmail.invalid && valEmail.touched" [class.has-success]="name.touched"> 
 					<span for="userName" class="form-label" style="color: #573b8a; font-size: 30px;">Your username</span>
-					<input type="text" class="form-control" [(ngModel)]="userName" name="username" style="height: 40px; display: flex;"> 
+					<!-- Name validation -->
+					<div *ngIf="name.invalid && name.touched" style="color: red;">Name is required</div>
+					<input type="text" class="form-control" [(ngModel)]="userName" name="username" style="height: 40px; display: flex;" #name="ngModel" required> 
 					<span for="email" class="form-label" style="color: #573b8a; font-size: 30px;">Your email</span>
-					<input type="text" class="form-control" [(ngModel)]="email" name="email"  style="height: 40px; margin-bottom: 50px; display: flex;"> 
+					<!-- Email validation -->
+					<div *ngIf="valEmail.errors && valEmail.invalid && valEmail.touched" style="color: red;">Email is invalid</div>
+					<input type="text" class="form-control" [(ngModel)]="email" name="email"  style="height: 40px; margin-bottom: 50px; display: flex;" #valEmail="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required> 
+					<button (click)="sendPassword()" class="btn btn-primary" [disabled]="name.invalid || valEmail.errors && valEmail.invalid">
+						SEND
+					</button>
 				</div>
 			</form>
-		</div>
-		<div class="modal-footer">
-			<button (click)="sendPassword()" class="btn btn-primary">
-				send
-			</button>
 		</div>
 	  </div>
 	</div>

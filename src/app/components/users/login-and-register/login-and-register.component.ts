@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-and-register',
@@ -53,14 +54,14 @@ export class LoginAndRegisterComponent implements OnInit {
         this.authService.saveToken(res.token);
         this.router.navigate(['/app'])
         console.log(res.token)
-        alert(res.text())
+        // alert(res.text())
       }
-      error => {
-        //Handle the error here
-        //If not handled, then throw it
-        alert(res.msg)
-        throw error; 
-     }
+    //   error => {
+    //     //Handle the error here
+    //     //If not handled, then throw it
+    //     alert(res.msg)
+    //     throw error; 
+    //  }
     })
   }
 
@@ -78,11 +79,7 @@ export class LoginAndRegisterComponent implements OnInit {
       email : this.email,
     }
     this.service.sendPassword(EmailDetail).subscribe(res => {
-      var closeModalBtn = document.getElementById('add-edit-modal-close')
-      if(closeModalBtn){
-        closeModalBtn.click()
-      }
-      
+      alert("SUCCESS - PLEASE CHECK YOUR EMAIL")
     })  
   }
 }
