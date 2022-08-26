@@ -11,6 +11,16 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
+  // getgame(keyword: string){
+  //   return this.http.get<APIResponse<Game>>(`${env.GAME_URL}/games/${keyword}`, {
+  //     headers: new HttpHeaders()
+  //       .set(env.XRapidAPIHostHeaderName, env.XRapidAPIHostHeaderValueForGame)
+  //       .set(env.XRapidAPIKeyHeaderName, env.XRapidAPIKeyHeaderValue),
+  //       params: new HttpParams()
+  //       .set('key',env.key)
+  //   })
+  // }
+
   getgamelist(
     ordering: string,
     searching?: string
@@ -42,7 +52,7 @@ export class HttpService {
         params: new HttpParams()
         .set('key',env.key)
       }
-    )
+    )    
     const gameScreenshotsRequest = this.http.get(
       `${env.GAME_URL}/games/${id}/screenshots`
     , {

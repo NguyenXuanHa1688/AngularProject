@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.routeSub = this.acctiveRouter.params.subscribe((params: Params) => {
       if(params['game-search']){
-        this.gameSearch('metacritic', params['game-search'])
+        this.gameSearch(params['game-search'])
       } else {
         this.gameSearch('metacritic')
       }     
@@ -53,5 +53,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     if(this.routeSub){
       this.routeSub.unsubscribe()
     }
+  }
+
+  singleSearch(search: string):void{
+    this.router.navigate(['detail', search])
+    console.log(search)
   }
 }
