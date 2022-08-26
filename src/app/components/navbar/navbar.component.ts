@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  @Output() cityname = new EventEmitter<string>();
+  @Output() cityname = new EventEmitter<string>()
 
   constructor(private router: Router) { }
 
@@ -17,17 +17,17 @@ export class NavbarComponent implements OnInit {
   }
 
   onSearch(value: string) {
-    this.cityname.emit(value);
-    
+    this.cityname.emit(value) 
     console.log(value)
   }
 
   public logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("token")
+    sessionStorage.clear()
     this.router.navigate(['/'])
   }
   
   onSearchInspection(value: string){
-    this.cityname.emit(value);
+    this.cityname.emit(value)
   }
 }

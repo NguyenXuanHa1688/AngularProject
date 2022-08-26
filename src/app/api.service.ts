@@ -120,4 +120,12 @@ export class ApiService {
   sendPassword(data: any){
     return this.http.post<any>(this.AppAPIUrl + '/Email',data)
   }
+
+  //get current login user
+  getCurrentUser(data: any){
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.get<any>(this.AppAPIUrl + '/Auth/getuser', {headers: httpHeaders})
+  }
 }

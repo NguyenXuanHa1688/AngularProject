@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormControl, Validators } from '@angular/forms';
+import { User } from 'src/app/model/user.model';
 
 @Component({
   selector: 'app-login-and-register',
@@ -21,12 +22,15 @@ export class LoginAndRegisterComponent implements OnInit {
   id: number = 0
   userName: string = ''
   password: string = ''
+  role: string= 'user'
 
   data: string
 
   email: string = ''
 
   activeEmailModal:boolean = false
+
+  currentUser: User
 
   ngOnInit(): void {
     this.id = this.user.id;
@@ -37,7 +41,8 @@ export class LoginAndRegisterComponent implements OnInit {
   register(){
     var user = {
       userName: this.userName,
-      password: this.password
+      password: this.password,
+      role: this.role
     }
     this.service.register(user).subscribe(res => {
       alert("SUCCESS CREATE ACCOUNT")
@@ -52,8 +57,9 @@ export class LoginAndRegisterComponent implements OnInit {
     this.service.login(user).subscribe(res => {
       if(res){
         this.authService.saveToken(res.token);
+        this.getuser()
         this.router.navigate(['/app'])
-        console.log(res.token)
+        // console.log(res.token)
         // alert(res.text())
       }
     //   error => {
@@ -62,6 +68,18 @@ export class LoginAndRegisterComponent implements OnInit {
     //     alert(res.msg)
     //     throw error; 
     //  }
+    })
+    
+  }
+
+  getuser(){
+    this.service.getCurrentUser(this.currentUser).subscribe({
+      next: (res) =>{
+        this.currentUser = res
+        sessionStorage.setItem('username', res.currentUserName)
+        sessionStorage.setItem('role', res.currentUserRole)
+        // alert(JSON.stringify(res))
+      }
     })
   }
 
