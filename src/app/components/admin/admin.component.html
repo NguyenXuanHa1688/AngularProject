@@ -1,0 +1,34 @@
+<app-navbar (cityname)="searchLogUser($event)"></app-navbar>
+<div class="admin-tabs">
+    <mat-tab-group mat-aligh-tabs="start" backgroundColor="primary">
+        <!-- next tab   -->
+        <mat-tab label="Activities">
+            <br>
+            <div *ngFor="let log of loglist">
+                <div class="alert alert-success" role="alert" id="success" *ngIf="log.status == 'Success'">
+                    <span style="margin-right: 100px;">User: {{log.user}}</span>
+                    <span> Action: {{log.action}}</span>
+                    <div>
+                        <img src="../../../assets/clock.png" alt="img" class="img"/><span>{{log.timeStamp | date}}</span>
+                        <h1>Status: {{log.status}}</h1>
+                    </div>
+                </div>
+                <div class="alert alert-danger" role="alert" id="success" *ngIf="log.status == 'Failed'">
+                    <span style="margin-right: 100px;">User: {{log.user}}</span>
+                    <span> Action: {{log.action}}</span>
+                    <div>
+                        <img src="../../../assets/clock.png" alt="img" class="img"/><span>{{log.timeStamp | date}}</span>
+                        <h1>Status: {{log.status}}</h1>
+                    </div>
+                </div>
+            </div>          
+              <!-- <button (click)="click()">test</button> -->
+        </mat-tab>
+        <!-- next tab -->
+        <mat-tab label="user">
+           <div class="user-section">
+                
+           </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

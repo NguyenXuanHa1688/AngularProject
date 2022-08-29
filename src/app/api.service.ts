@@ -11,14 +11,6 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  getUserList():Observable<any[]>{
-    return this.http.get<any>(this.AppAPIUrl + '/Users');
-  }
-
-  addUser(data: any){
-    return this.http.post(this.AppAPIUrl + '/Users', data)
-  }
-
   //INSPECTION API
   getInspectionList():Observable<any[]>{
     const httpHeaders = new HttpHeaders({
@@ -127,5 +119,29 @@ export class ApiService {
       'Authorization': 'bearer ' + localStorage.getItem("token")
     })
     return this.http.get<any>(this.AppAPIUrl + '/Auth/getuser', {headers: httpHeaders})
+  }
+
+  //get activities list
+  getLog():Observable<any[]>{
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem('token')
+    })
+    return this.http.get<any>(this.AppAPIUrl + '/LogActivities', {headers: httpHeaders})
+  }
+
+  //filter activities base on user name
+  searchLogUser(data: any){
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.get<any>(this.AppAPIUrl + `/Auth/filteruser/?request=${data}` , {headers: httpHeaders})
+  }
+
+  //get user accounts list
+  getUsers():Observable<any[]>{
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.get<any>(this.AppAPIUrl + '/UserDto')
   }
 }
