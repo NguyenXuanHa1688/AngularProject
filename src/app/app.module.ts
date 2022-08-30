@@ -26,6 +26,7 @@ import { HttpErrorsInterceptor } from './interceptors/http-error.interceptor';
 import { DetailsComponent } from './components/details/details.component';
 import { GameTabsComponent } from './components/game-tabs/game-tabs.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AdminComponent } from './components/admin/admin.component';
     DetailsComponent,
     GameTabsComponent,
     AdminComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,

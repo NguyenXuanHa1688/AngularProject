@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
+import { ChatComponent } from './components/chat/chat.component';
 import { DetailsComponent } from './components/details/details.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginAndRegisterComponent } from './components/users/login-and-register/login-and-register.component';
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'detail/:id', component: DetailsComponent},
   {path: 'app', component: InspectionComponent, canActivate: [AuthGuard]},
   {path: 'weather', component: WeatherComponent, canActivate: [AuthGuard]},
-  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]}
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  {path: 'chat', component: ChatComponent}
 ];
 
 @NgModule({
