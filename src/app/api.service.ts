@@ -144,4 +144,28 @@ export class ApiService {
     })
     return this.http.get<any>(this.AppAPIUrl + '/UserDto')
   }
+
+  //update user
+  updateUser(id: number, data: any):Observable<any[]>{
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.put<any>(this.AppAPIUrl + `/UserDto/${id}`, data)
+  }
+
+  //delete user
+  deleteUser(id: number){
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.delete(this.AppAPIUrl + `/UserDto/${id}`, {headers: httpHeaders})
+  }
+
+  //find user
+  findUser(name: string){
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.get<any>(this.AppAPIUrl + `/UserDto/filteruser/?request=${name}`)
+  }
 }

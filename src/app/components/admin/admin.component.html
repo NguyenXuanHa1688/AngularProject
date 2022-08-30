@@ -26,9 +26,41 @@
         </mat-tab>
         <!-- next tab -->
         <mat-tab label="user">
-           <div class="user-section">
-                
-           </div>
+           <!-- <div class="user-section">
+                <form class="user-section-list" *ngFor="let user of userlist">
+                    <input type="id" value="{{user.id}}" disable hidden #idChange>
+                    <input type="text" value="{{user.userName}}" id="username" #usernameChange> 
+                    <input type="text" value="{{user.role}}" id="role" #roleChange> 
+                    <input type="text" value="{{user.password}}" id="password" #passwordChange> 
+                    <button (click)="deleteUser(user.id)">Send</button>
+                </form>
+           </div> -->
+           <br>
+           <table class="table table-bordered">
+            <thead>
+                <th>Id</th>
+                <th>user name</th>
+                <th>role</th>
+                <th>password</th>
+                <th>options</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of userlist" >
+                    <td>{{user.id}}</td>
+                    <td>{{user.userName}}</td>
+                    <!-- <td>{{item.inspectionTypeId}}</td> -->
+                    <td>{{user.role}}</td>
+                    <td>{{user.password}}</td>
+                    <td>
+                        <button class="btn btn-outline-danger me-2 mb-1" (click)="deleteUser(user.id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                              </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         </mat-tab>
     </mat-tab-group>
 </div>
