@@ -113,7 +113,7 @@ export class ApiService {
     return this.http.post<any>(this.AppAPIUrl + '/Email',data)
   }
 
-  //get current login user
+  //GET CURRENT LOGIN USER
   getCurrentUser(data: any){
     const httpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + localStorage.getItem("token")
@@ -121,7 +121,7 @@ export class ApiService {
     return this.http.get<any>(this.AppAPIUrl + '/Auth/getuser', {headers: httpHeaders})
   }
 
-  //get activities list
+  //GET ACTIVITIES LIST
   getLog():Observable<any[]>{
     const httpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + localStorage.getItem('token')
@@ -129,7 +129,7 @@ export class ApiService {
     return this.http.get<any>(this.AppAPIUrl + '/LogActivities', {headers: httpHeaders})
   }
 
-  //filter activities base on user name
+  //FILTER ACTIVITIES BASE ON USER NAME
   searchLogUser(data: any){
     const httpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + localStorage.getItem("token")
@@ -137,7 +137,7 @@ export class ApiService {
     return this.http.get<any>(this.AppAPIUrl + `/Auth/filteruser/?request=${data}` , {headers: httpHeaders})
   }
 
-  //get user accounts list
+  //GET USER ACCOUNT LIST
   getUsers():Observable<any[]>{
     const httpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + localStorage.getItem("token")
@@ -145,7 +145,7 @@ export class ApiService {
     return this.http.get<any>(this.AppAPIUrl + '/UserDto')
   }
 
-  //update user
+  //UPDATE USER
   updateUser(id: number, data: any):Observable<any[]>{
     const httpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + localStorage.getItem("token")
@@ -153,7 +153,7 @@ export class ApiService {
     return this.http.put<any>(this.AppAPIUrl + `/UserDto/${id}`, data)
   }
 
-  //delete user
+  //DELETE USER
   deleteUser(id: number){
     const httpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + localStorage.getItem("token")
@@ -161,7 +161,7 @@ export class ApiService {
     return this.http.delete(this.AppAPIUrl + `/UserDto/${id}`, {headers: httpHeaders})
   }
 
-  //find user
+  //FIND USER
   findUser(name: string){
     const httpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + localStorage.getItem("token")

@@ -23,10 +23,10 @@ export class AdminComponent implements OnInit {
   password: string = ''
   role: string= ''
 
-  @ViewChild("idChange") idChange: ElementRef;
-  @ViewChild("usernameChange") usernameChange: ElementRef;
-  @ViewChild("passwordChange") passwordChange: ElementRef;
-  @ViewChild("roleChange") roleChange: ElementRef;
+  @ViewChild('idChange') idChange: ElementRef;
+  @ViewChild('usernameChange') usernameChange: ElementRef;
+  @ViewChild('passwordChange') passwordChange: ElementRef;
+  @ViewChild('roleChange') roleChange: ElementRef;
 
   ngOnInit(): void {
     this.userName = this.userName

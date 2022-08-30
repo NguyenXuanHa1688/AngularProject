@@ -10,23 +10,23 @@ export class AuthService {
 
   getDecodedAccessToken(token: string): any {
     try {
-      return jwt_decode(token);
+      return jwt_decode(token)
     } catch(Error) {
-      return null;
+      return null
     }
   }
 
   saveToken(token: any){
-    localStorage.setItem("token",token);
+    localStorage.setItem("token",token)
   }
   getToken(){
-    return localStorage.getItem("token");
+    return localStorage.getItem("token")
   }
   isAuthenticated(){
-    const tokenInfo = this.getDecodedAccessToken(this.getToken()); // decode token
-    const expireDate = tokenInfo.exp; // get token expiration dateTime
-    console.log(tokenInfo); // show decoded token object in console
-    if(expireDate){return true;}  
-    return false;
+    const tokenInfo = this.getDecodedAccessToken(this.getToken())// decode token
+    const expireDate = tokenInfo.exp // get token expiration dateTime
+    console.log(tokenInfo) // show decoded token object in console
+    if(expireDate){return true}  
+    return false
   }
 }

@@ -44,11 +44,11 @@ inspectionTypesList$!:Observable<any[]>
       }
       var showAddSuccess = document.getElementById('add-success')
       if(showAddSuccess){
-        showAddSuccess.style.display = "block"
+        showAddSuccess.style.display = 'block'
       }
       setTimeout(function() {
         if(showAddSuccess) {
-          showAddSuccess.style.display = "none"
+          showAddSuccess.style.display = 'none'
         }
       }, 4000)
     })  
@@ -69,11 +69,11 @@ inspectionTypesList$!:Observable<any[]>
       }
       var showUpdateSuccess = document.getElementById('update-success')
       if(showUpdateSuccess){
-        showUpdateSuccess.style.display = "block"
+        showUpdateSuccess.style.display = 'block'
       }
       setTimeout(function() {
         if(showUpdateSuccess) {
-          showUpdateSuccess.style.display = "none"
+          showUpdateSuccess.style.display = 'none'
         }
       }, 4000)
     })
