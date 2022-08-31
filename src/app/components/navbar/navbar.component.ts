@@ -12,6 +12,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  username = sessionStorage.getItem('username')
+
   ngOnInit(): void {
     
   }

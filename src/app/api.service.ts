@@ -146,12 +146,20 @@ export class ApiService {
   }
 
   //UPDATE USER
-  updateUser(id: number, data: any):Observable<any[]>{
+  updateUserDto(id: number, data: any):Observable<any[]>{
     const httpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + localStorage.getItem("token")
     })
     return this.http.put<any>(this.AppAPIUrl + `/UserDto/${id}`, data)
   }
+
+  updateUser(id: number, data: any):Observable<any[]>{
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.put<any>(this.AppAPIUrl + `/User/${id}`, data)
+  }
+
 
   //DELETE USER
   deleteUser(id: number){
@@ -166,6 +174,14 @@ export class ApiService {
     const httpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + localStorage.getItem("token")
     })
-    return this.http.get<any>(this.AppAPIUrl + `/UserDto/filteruser/?request=${name}`)
+    return this.http.get<any>(this.AppAPIUrl + `/UserDto/finduser/?request=${name}`)
+  }
+
+  //UPDATE USER PROFILE
+  updateProfile(id: number, data: any){
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.put<any>(this.AppAPIUrl + `/Auth/updateProfile?id=${id}`, data)
   }
 }

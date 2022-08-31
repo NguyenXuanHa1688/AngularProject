@@ -11,7 +11,7 @@ import { User } from 'src/app/model/user.model'
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private service:ApiService ) {}
+  constructor(private service:ApiService) {}
 
   logData?: logs
   public loglist: Array<logs>
