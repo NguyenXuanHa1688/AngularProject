@@ -40,10 +40,10 @@ export class SignalrService {
   private getConnection(): HubConnection {
     return new HubConnectionBuilder()
       .withUrl(this.connectionUrl, 
-        {
-          skipNegotiation: true,
-          transport: signalR.HttpTransportType.WebSockets
-        }
+        // {
+        //   skipNegotiation: true,
+        //   transport: signalR.HttpTransportType.WebSockets
+        // }
       )
       .withHubProtocol(new MessagePackHubProtocol())
       
@@ -53,6 +53,7 @@ export class SignalrService {
 
   private buildChatMessage(message: string): chatMessage {
     return {
+      user: sessionStorage.getItem('username'),
       connectionId: this.hubConnection.connectionId,
       text: message,
       dateTime: new Date()
@@ -65,6 +66,7 @@ export class SignalrService {
     this.hubConnection.start()
       .then(() => console.log('connection started'))
       .catch((err) => console.log('error while establishing signalr connection: ' + err))
+    console.log('id:' + this.hubConnection.connectionId)  
   }
 
   private addListeners() {

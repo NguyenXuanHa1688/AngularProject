@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container mt-5">
-    <h1>SignalR Chat DEMO</h1>
-    <input type="text" class="mt-3 mb-3 mr-3" [(ngModel)]="text">
+    <h1>SignalR Global Chat</h1>
+    <input type="text" class="input" [(ngModel)]="text">
     <button class="btn btn-primary" [disabled]="text.length==0" (click)="sendMessage()">Send Message</button>
     <h4 class="mb-3">List of Messages</h4>
   
@@ -10,7 +10,8 @@
     </div>
     <div *ngFor="let m of signalRService.messages">
       <div class="mb-2 mt-2">
-        <div><strong>ConnectionID</strong> {{m.connectionId}}</div>
+        <!-- <div><strong>ConnectionID</strong> {{m.connectionId}}</div> -->
+        <div><strong>User</strong> {{m.user}}</div>
         <div><strong>Date</strong> {{m.dateTime | date}}</div>
         <div><strong>Message</strong> {{m.text}}</div>
         <hr>
