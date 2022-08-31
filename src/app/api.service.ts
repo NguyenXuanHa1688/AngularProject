@@ -184,4 +184,29 @@ export class ApiService {
     })
     return this.http.put<any>(this.AppAPIUrl + `/Auth/updateProfile?id=${id}`, data)
   }
+
+  //GAME LIST API
+  //GET GAME LIST BASE ON USER
+  getMyGameList(name: string):Observable<any[]>{
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.get<any>(this.AppAPIUrl + `/games/getMyGamelist?request=${name}`)
+  }
+
+  //ADD A GAME
+  addMyGame(data: any){
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.post<any>(this.AppAPIUrl + '/games', data)
+  }
+
+  //DELETE A GAME 
+  deleteMyGame(id: number){
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + localStorage.getItem("token")
+    })
+    return this.http.delete(this.AppAPIUrl + `/games/${id}`)
+  }
 }

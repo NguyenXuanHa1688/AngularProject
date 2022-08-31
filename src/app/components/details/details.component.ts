@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ApiService } from 'src/app/api.service';
 import { Game } from 'src/app/model/game.model';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -15,6 +16,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     private ActivatedRoute: ActivatedRoute,
     private httppService: HttpService,
     private router: Router,
+    private service: ApiService
   ) { }
 
   gameRating = 0
@@ -66,6 +68,17 @@ export class DetailsComponent implements OnInit, OnDestroy {
   singleSearch(search: string):void{
     this.router.navigate(['detail', search])
     console.log(search)
+  }
+
+  addToMyGameList(){
+    var mygame = {
+      apiId : this.gameId,
+      name : this.game.name,
+      userAdd: sessionStorage.getItem('username')
+    }
+    this.service.addMyGame(mygame).subscribe(res => {
+      alert('success add game')
+    })
   }
 
 }

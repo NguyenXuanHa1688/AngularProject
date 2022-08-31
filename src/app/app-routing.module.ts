@@ -4,6 +4,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { DetailsComponent } from './components/details/details.component';
 import { HomeComponent } from './components/home/home.component';
+import { PlaylistComponent } from './components/playlist/playlist.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginAndRegisterComponent } from './components/users/login-and-register/login-and-register.component';
 import { WeatherComponent } from './components/weather/weather.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'weather', component: WeatherComponent, canActivate: [AuthGuard]},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
   {path: 'chat', component: ChatComponent},
-  {path: 'profile', component: ProfileComponent}
+  {path: 'profile', component: ProfileComponent},
+  {path: 'playlist', component: PlaylistComponent}
 ];
 
 @NgModule({

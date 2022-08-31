@@ -28,6 +28,7 @@ import { GameTabsComponent } from './components/game-tabs/game-tabs.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PlaylistComponent } from './components/playlist/playlist.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     AdminComponent,
     ChatComponent,
     ProfileComponent,
+    PlaylistComponent,
   ],
   imports: [
     BrowserModule,
