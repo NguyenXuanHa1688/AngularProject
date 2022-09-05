@@ -2,6 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/c
 import { Injectable } from "@angular/core";
 import { Observable, throwError as observableThrowError, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import Swal from "sweetalert2";
 
 @Injectable()
 export class HttpErrorsInterceptor implements HttpInterceptor {
@@ -16,7 +17,12 @@ export class HttpErrorsInterceptor implements HttpInterceptor {
         // )
         return next.handle(req).pipe(catchError(err => {
             const error = err.error?.message || err.statusText
-            alert(JSON.stringify(err.error))
+            // alert(JSON.stringify(err.error))
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: JSON.stringify(err.error),
+              })
             return throwError(error)
         }))
     }

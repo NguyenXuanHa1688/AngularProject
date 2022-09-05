@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { User } from 'src/app/model/user.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
@@ -44,7 +45,11 @@ export class ProfileComponent implements OnInit {
       role: this.roleChange.nativeElement.value,
     }
     this.service.updateProfile(id, user).subscribe(res => {
-      alert('success')
+      Swal.fire(
+        'Good job!',
+        'SUCCESS',
+        'success'
+      )
     })
   }
 }

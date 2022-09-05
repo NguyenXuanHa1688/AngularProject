@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/model/user.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-and-register',
@@ -45,7 +46,12 @@ export class LoginAndRegisterComponent implements OnInit {
       role: this.role
     }
     this.service.register(user).subscribe(res => {
-      alert("SUCCESS CREATE ACCOUNT")
+      // alert("SUCCESS CREATE ACCOUNT")
+      Swal.fire(
+        'Good job!',
+        'SUCCESS CREATE ACCOUNT!',
+        'success'
+      )
     })
   }
 
@@ -97,7 +103,12 @@ export class LoginAndRegisterComponent implements OnInit {
       email : this.email,
     }
     this.service.sendPassword(EmailDetail).subscribe(res => {
-      alert("SUCCESS - PLEASE CHECK YOUR EMAIL")
+      // alert("SUCCESS - PLEASE CHECK YOUR EMAIL")
+      Swal.fire(
+        'Good job!',
+        'SUCCESS - PLEASE CHECK YOUR EMAIL',
+        'success'
+      )
     })  
   }
 }

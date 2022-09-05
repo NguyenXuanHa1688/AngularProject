@@ -20,7 +20,7 @@
               <li><a class="dropdown-item" href="/weather">weather</a></li>
               <li><a class="dropdown-item" href="/app">Inspection</a></li>
               <li><a class="dropdown-item" href="/chat">chat</a></li>
-              <li><hr class="dropdown-divider"></li>
+              <li *ngIf="userRole == 'admin'"><hr class="dropdown-divider"></li>
               <li *ngIf="userRole == 'admin'"><a class="dropdown-item" href="/admin">Admin</a></li>
             </ul>
           </li>

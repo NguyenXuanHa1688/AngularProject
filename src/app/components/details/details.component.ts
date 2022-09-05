@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 import { Game } from 'src/app/model/game.model';
 import { HttpService } from 'src/app/services/http.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-details',
@@ -77,7 +78,12 @@ export class DetailsComponent implements OnInit, OnDestroy {
       userAdd: sessionStorage.getItem('username')
     }
     this.service.addMyGame(mygame).subscribe(res => {
-      alert('success add game')
+      // alert('success add game')
+      Swal.fire(
+        'Good job!',
+        'SUCCESSFULL ADD GAME',
+        'success'
+      )
     })
   }
 

@@ -22,6 +22,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   private routeSub: Subscription
   private gameSub: Subscription
 
+  page: number = 1
+  count: number = 0
+  tableSize: number = 8
+
   ngOnInit(): void {
     this.routeSub = this.acctiveRouter.params.subscribe((params: Params) => {
       if(params['game-search']){
@@ -58,5 +62,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   singleSearch(search: string):void{
     this.router.navigate(['detail', search])
     console.log(search)
+  }
+
+  onTableDataChange(event: any){
+    this.page = event
+    // this.getLogsList()
+  }
+
+  onTableSizeChange(event: any): void{
+    this.tableSize = event.target.value
+    this.page = 1
+    // this.getLogsList()
   }
 }
