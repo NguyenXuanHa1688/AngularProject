@@ -8,6 +8,7 @@ import { MatTabsModule } from '@angular/material/tabs'
 import { MatIconModule } from '@angular/material/icon'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -59,6 +60,7 @@ import { PlaylistComponent } from './components/playlist/playlist.component';
     MatSelectModule,
     MatTabsModule,
     MatIconModule,
+    NgxPaginationModule
   ],
   providers: [
     ApiService,

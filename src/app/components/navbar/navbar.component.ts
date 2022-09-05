@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router) { }
 
   username = sessionStorage.getItem('username')
+  userRole = sessionStorage.getItem('role')
 
   ngOnInit(): void {
     

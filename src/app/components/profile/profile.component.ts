@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
 
   public u = 'test'
 
+  userName = sessionStorage.getItem('username')
+
   @ViewChild('idChange') idChange: ElementRef;
   @ViewChild('usernameChange') usernameChange: ElementRef;
   @ViewChild('passwordChange') passwordChange: ElementRef;

@@ -23,6 +23,11 @@ export class AdminComponent implements OnInit {
   password: string = ''
   role: string= ''
 
+  page: number = 1
+  count: number = 0
+  tableSize: number = 5
+
+
   @ViewChild('idChange') idChange: ElementRef;
   @ViewChild('usernameChange') usernameChange: ElementRef;
   @ViewChild('passwordChange') passwordChange: ElementRef;
@@ -89,5 +94,16 @@ export class AdminComponent implements OnInit {
         console.log(this.userlist)
       }
     })
+  }
+
+  onTableDataChange(event: any){
+    this.page = event
+    // this.getLogsList()
+  }
+
+  onTableSizeChange(event: any): void{
+    this.tableSize = event.target.value
+    this.page = 1
+    // this.getLogsList()
   }
 }
